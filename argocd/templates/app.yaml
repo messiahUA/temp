@@ -24,3 +24,30 @@ spec:
       selfHeal: true
     syncOptions:
     - FailOnSharedResource=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test2
+  labels:
+    {{- toYaml .Values.labels | nindent 4 }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    repoURL: https://ealenn.github.io/charts
+    chart: echo-server
+    helm:
+      values: |-
+        labels:
+          test: test3
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - FailOnSharedResource=true
