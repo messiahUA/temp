@@ -40,7 +40,7 @@ spec:
     namespace: argocd
   source:
     repoURL: https://ealenn.github.io/charts
-    chart: echo-server
+    chart: ealenn/echo-server
     targetRevision: 0.6.0
     helm:
       values: |-
