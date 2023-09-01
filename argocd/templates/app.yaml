@@ -16,6 +16,8 @@ spec:
     path: argocd
     helm:
       values: |-
+        labels:
+          test: test2
   syncPolicy:
     automated:
       prune: true
