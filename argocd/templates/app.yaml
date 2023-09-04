@@ -17,7 +17,7 @@ spec:
     helm:
       values: |-
         labels:
-          test: test2
+          test: test3
   syncPolicy:
     automated:
       prune: true
@@ -39,13 +39,11 @@ spec:
     name: in-cluster
     namespace: argocd
   source:
-    repoURL: https://ealenn.github.io/charts
-    chart: echo-server
-    targetRevision: 0.5.0
+    repoURL: https://github.com/messiahUA/temp
+    path: echo-server
     helm:
-      values: |-
-        labels:
-          test: test3
+      valueFiles:
+        - test.yaml
   syncPolicy:
     automated:
       prune: true
